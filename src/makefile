@@ -4,7 +4,7 @@ OBJS = main.o ReadWriteFile.o Simulation.o MyGlut.o
 CC = g++
 DEBUG = -g
 CFLAGS = -Wall -c $(DEBUG) -pthread
-LFLAGS = -Wall $(DEBUG) -lm
+LFLAGS = -Wall $(DEBUG) -lm -lglut -lGL -lGLU 
 
 SOURCES = main.cpp Simulation.cpp ReadWriteFile.cpp MyGlut.cpp
 

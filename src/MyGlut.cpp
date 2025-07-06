@@ -15,6 +15,12 @@
 //#include "Input/PlayerInput.h"
 #include "MyGlut.h"
 
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
+
+using namespace std;
+
 MyGlut* MyGlut::s_instance = NULL;
 
 MyGlut* MyGlut::getInstance()
@@ -42,15 +48,17 @@ void MyGlut::releaseInstance()
 
 void MyGlut::init(int argc, char** argv)
 {
-	//band aid for setting screen height and width from file
-	MyGlut* mg = MyGlut::getInstance();
+	cout << "Height is " << screenHeight << " and width is " << screenWidth << endl;
 
-	int width = mg->screenWidth;
+	testFunction();
 
-	int height = mg->screenHeight;
-	//*******************************************************
+	cout << "Calling Simulation shutdown ..." << endl;
 
-	printf("height %d width %d at the start of Init method\n", height, width);
 
 	Simulation::getInstance()->shutdown();
+}
+
+int MyGlut::testFunction(void)
+{
+	
 }

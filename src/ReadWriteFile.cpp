@@ -13,7 +13,7 @@
 #include <fstream>
 #include <vector>
 
-using namespace std;
+//using namespace std;
 
 #define MAXBUFFER 512
 #define NUM_OF_ROBOT_TARGET_PAIRS_INDEX 2
@@ -76,7 +76,7 @@ void ReadWriteFile::readFile()
 	std::cout << "stored Vector lines: " << std::endl;
 	for (size_t i = 0; i < inputFileLines.size(); i++)
 	{
-		std::cout << "inputFileLines[" << i << "] :" << inputFileLines[i] << endl;
+		std::cout << "inputFileLines[" << i << "] :" << inputFileLines[i] << std::endl;
 	}
 
 	MyGlut::getInstance()->screenWidth = inputFileLines[0];

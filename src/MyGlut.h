@@ -20,13 +20,14 @@ public:
 	int screenHeight;
 	int screenWidth;
 
-	static void init(int argc, char** argv);
+	void init(int argc, char** argv);
 	static void shutdown(void);
 	static void gameUpdate(void);
 	static void reshape(int height, int width);
 	static void processKeySpecealUp(int key, int x, int y);
 	static MyGlut* getInstance();
 	static void releaseInstance();
+	int testFunction(void);
 
 };
 
