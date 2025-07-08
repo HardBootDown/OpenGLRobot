@@ -50,7 +50,26 @@ void MyGlut::init(int argc, char** argv)
 {
 	cout << "Height is " << screenHeight << " and width is " << screenWidth << endl;
 
-	testFunction();
+	Simulation::getInstance()->init();
+
+	glutInit(&argc, argv);
+
+	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
+
+	glutInitWindowSize(screenHeight, screenWidth);
+
+	glutCreateWindow("Welcome to gorobot, press F1 key to exit.");
+
+	glutDisplayFunc(gameUpdate);
+
+	//glutReshapeFunc(reshape);
+
+	//glutSpecialUpFunc(processKeySpecialUp);//catch the keys and send to PlayerInput
+
+	glutIdleFunc(gameUpdate);//what to do when glut is idle
+
+	glutMainLoop();//turn control over to glut
+
 
 	cout << "Calling Simulation shutdown ..." << endl;
 
@@ -60,5 +79,10 @@ void MyGlut::init(int argc, char** argv)
 
 int MyGlut::testFunction(void)
 {
-	
+	return 0;
+}
+
+void MyGlut::gameUpdate(void)
+{
+	Simulation::getInstance()->update();
 }
