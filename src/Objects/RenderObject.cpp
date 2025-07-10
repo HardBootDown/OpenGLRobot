@@ -15,11 +15,5 @@ using std::cout;
 
 void RenderObject::Render (void)
 {
-	/*glBegin(GL_QUADS); THE OLD ROBOT
-        glColor3f (1.0, 0.0, 0.0);
-        glVertex2f (parentRobot->getX(), parentRobot->getY());
-        glVertex2f (parentRobot->getX() + parentRobot->getW(), parentRobot->getY());
-        glVertex2f (parentRobot->getX() + parentRobot->getW(), parentRobot->getY() + parentRobot->getH());
-        glVertex2f (parentRobot->getX(), parentRobot->getY() + parentRobot->getH());
-    glEnd();*/
+	cout << "This is a place holder\n";
 }

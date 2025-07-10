@@ -5,12 +5,16 @@
 */
 
 
-#include "ReadWriteFile.h"
-#include "MyGlut.h"
+
+
 
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+
+#include "ReadWriteFile.h"
+#include "MyGlut.h"
+
 
 using namespace std;
 

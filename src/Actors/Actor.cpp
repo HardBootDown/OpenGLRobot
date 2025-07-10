@@ -52,6 +52,11 @@ float Actor::getVelocity(void)
     return velocity;
 }
 
+float Actor::getSpeed(void)
+{
+    return speed;
+}
+
 float Actor::setA(float A)
 {
     while (A > 360.0)
@@ -80,4 +85,19 @@ void Actor::setVelocity(float v)
 void Actor::setR(int r)
 {
     radius = r;
+}
+
+void Actor::setW(int w)
+{
+    width = w;
+}
+
+void Actor::setH(int w)
+{
+    height = w;
+}
+
+void Actor::setSpeed(float s)
+{
+    speed = s;
 }

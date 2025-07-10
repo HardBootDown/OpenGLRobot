@@ -12,13 +12,13 @@ class ObjectRenderObject : public RenderObject
 {
 private:
 
-	Objects* parentObjects;
+	Objects* parentObject;
 
 public:
 
 	ObjectRenderObject(Objects* r);
 
-	void Render(void);
+	void Render(void) override;
 
 };
 #endif

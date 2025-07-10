@@ -70,9 +70,7 @@ void MyGlut::init(int argc, char** argv)
 
 	glutMainLoop();//turn control over to glut
 
-
 	cout << "Calling Simulation shutdown ..." << endl;
-
 
 	Simulation::getInstance()->shutdown();
 }

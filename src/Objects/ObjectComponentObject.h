@@ -13,11 +13,7 @@ protected:
 public:
 	ObjectComponentObject(Objects* r);
 
-	void Update();
-
-	float nextXmove;
-
-	float nextYmove;
+	void Update() override;
 };
 
 #endif

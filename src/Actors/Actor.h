@@ -16,13 +16,16 @@
 #define ACTOR_H_
 
 #include "../Objects/RenderObject.h"
-//#include "../Timer.h"
+#include "../Objects/ComponentObject.h"
+
+class ComponentObject;
+class RenderObject;
 
 class Actor
 {
 protected://other Actors have these
-    RenderObject* renderObj; //Actor has a RenderObject
-    //ComponentObject * component;//Actor has a ComponentObject
+    RenderObject* renderObj; //Actor has a RenderObject pointer
+    ComponentObject* componentObj;//Actor has a ComponentObject pointer
 
     int width;
     int height;
@@ -48,11 +51,15 @@ public:
     float getY(void);
     float getA(void);
     float getVelocity(void);
+    float getSpeed(void);
 
     void setY(float w);
     void setX(float x);
     float setA(float A);
     void setVelocity(float v);
     void setR(int r);
+    void setW(int w);
+    void setH(int h);
+    void setSpeed(float s);
 };
 #endif

@@ -8,7 +8,7 @@
 *  new values of the object, respectively.
 *
 */
-
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -25,46 +25,46 @@
 #define TURN_RATE 30.0
 
 //****These are values that represent the resepctive indeces from the ReadWritefile
-#define READ_RADIUS  (o * 3) + startingIndex
-#define READ_X_COORD READ_RADIUS + 1  // These are the
-#define READ_Y_COORD READ_X_COORD + 1 // Indece values
-//*********************************************************************************
-
+#define READ_RADIUS  3
+#define READ_X_COORD 4
+#define READ_Y_COORD 5 
 
 Objects::Objects(int o, int startingIndex)
 {
     WhoAmI = o; //Represents an object
 
-    //****This is where the indeces are referenced to get the values
+    
 
-    //****These lines of code reads its respective values in ReadWritefile
-    x_coord = ReadWriteFile::getInstance()->get_buffer(READ_X_COORD);
-    y_coord = ReadWriteFile::getInstance()->get_buffer(READ_Y_COORD);
-    radius = ReadWriteFile::getInstance()->get_buffer(READ_RADIUS);
-    //**************************************************************
+    setX(1); //set X cord
+    setY(2); //set Y cord
+    setR(10); //set Radius
+    setW(getR() * 2.0); //width = radius * 2.0
+    setH(getR() * 2.0); //height = radius * 2.0
+    setSpeed(1.0);
+    setVelocity(0.0);
 
-    printf("Hi, my name is object %d\n", WhoAmI);
-    printf("My radius equals %d\n", radius);
-    printf("My x_coord equals %f and my y_coord equals %f\n", x_coord, y_coord);
-    printf("************************************************************************\n");
+    
 
     srand(time(NULL));
-
-    width = radius * 2.0;
-    height = radius * 2.0;
-    speed = 1;
-    //Angle = -90;
     Angle = rand() % 360;
+    //setA(rand() % 360);
 
-    velocity = 0;
+    printf("Hi, my name is object %d\n", WhoAmI);
+    printf("My radius equals %f\n", radius);
+    printf("My x_coord equals %f and my y_coord equals %f\n", x_coord, y_coord);
+    printf("My width equals %d \n", getW());
+    printf("My height equals %d \n", getH());
+    printf("My speed equals %f \n", getSpeed());
+    printf("My velocity equals %f \n", getVelocity());
+    printf("************************************************************************\n");
 
     renderObj = new ObjectRenderObject(this);
 
     RenderManager::GetInstance()->Add(renderObj);
 
-    objectComponent = new ObjectComponentObject(this);
+    componentObj = new ObjectComponentObject(this);
 
-    ComponentManager::GetInstance()->Add(objectComponent);
+    ComponentManager::GetInstance()->Add(componentObj);
 
 }
 
@@ -77,9 +77,9 @@ Objects::~Objects()
         delete renderObj;
     }
 
-    if (objectComponent != 0)
+    if (componentObj != 0)
     {
-        ComponentManager::GetInstance()->Remove(objectComponent);
-        delete objectComponent;
+        ComponentManager::GetInstance()->Remove(componentObj);
+        delete componentObj;
     }
 }

@@ -9,6 +9,8 @@
 *
 */
 
+#include <iostream>
+
 #include "ObjectComponentObject.h"
 #include <stdio.h>
 #include "../Actors/Objects.h"
@@ -21,6 +23,7 @@
 #define PI 3.14159
 #define DEG_TO_RAD PI / 180.0
 
+
 ObjectComponentObject::ObjectComponentObject(Objects* r)
 {
     parentObject = r;
@@ -30,29 +33,18 @@ void ObjectComponentObject::Update()
 {
     parentObject->setVelocity(30);
 
-    //parentObject->setA(parentObject->getA() + 30);
-
-    //get the width and height of the display window ... defined in main.
-    MyGlut* mg = MyGlut::getInstance();
-
     float deltaTime = Simulation::getInstance()->getDeltaTime();
 
-    //error check the delta time
-      //printf("RobotComponent::Update has a delta time of %.8f\n", deltaTime);
-
-      // get a unit vector pointing in the correct rotation
     float x = -sin(parentObject->getA() * DEG_TO_RAD);
-
     float y = cos(parentObject->getA() * DEG_TO_RAD);
-
-    // scale by the velocity of the robot (scaled by delta time for the frame)
     x *= parentObject->getVelocity() * deltaTime;
-
     y *= parentObject->getVelocity() * deltaTime;
 
-    //check the x axis
-      //calculate the next X move
-    nextXmove = parentObject->getX() + x;
+    set_nextXmove(parentObject->getX() + x);
+    set_nextYmove(parentObject->getY() + y);
+
+
+    MyGlut* mg = MyGlut::getInstance();
 
     if (nextXmove > mg->screenWidth)
     {
@@ -72,10 +64,6 @@ void ObjectComponentObject::Update()
         parentObject->setX(nextXmove);
     }
 
-    //check the Y axis
-    //calculate the next Y move
-    nextYmove = parentObject->getY() + y;
-
     if (nextYmove > mg->screenHeight)
     {
         parentObject->setY(mg->screenHeight - parentObject->getR());
@@ -92,5 +80,5 @@ void ObjectComponentObject::Update()
     {
         parentObject->setY(nextYmove);
     }
-
+    
 }

@@ -14,13 +14,14 @@
 #include "Actor.h"
 
 class ObjectComponentObject;
+class ObjectRenderObject;
 
 class Objects : public Actor
 {
 private:
-
 	ObjectComponentObject* objectComponent;
-
+	ObjectRenderObject* objectRender;
+	
 	//which robot am I?
 	int WhoAmI;
 
@@ -31,6 +32,7 @@ public:
 	~Objects();
 
 	ObjectComponentObject* get_objectComponent(void) { return objectComponent; }
+	ObjectRenderObject* get_objectRender(void) { return objectRender; }
 
 };
 #endif

@@ -56,21 +56,24 @@ void Simulation::init(void)
 
 	array_objects = (Objects**)malloc(sizeof(Objects*) * numObjects);
 
+	
 	for (int o = 0; o < numObjects; o++)
 	{
-		objects = new Objects(o, objectStartingIndex);
+		objects = new Objects(o, 2);
 		array_objects[o] = objects;
 	}
 
+
+
 	//Create new world object
-	world = new World();
+	//world = new World();
 
 	//Create a new Timer object
 	timer = new Timer();
 
 	//Create a new worldTime object and start the timer
-	worldTime = new VisibleTimer();
-	worldTime->startTimer();
+	//worldTime = new VisibleTimer();
+	//worldTime->startTimer();
 }
 
 void Simulation::shutdown(void)
@@ -90,6 +93,9 @@ void Simulation::shutdown(void)
 
 void Simulation::update(void)
 {
+
+	std::cout << "here!!!" << std::endl;
+
 	deltaTime = timer->GetDeltaTime();
 
 	elapsedSeconds = timer->elapsedSeconds();
@@ -103,13 +109,14 @@ void Simulation::update(void)
 
 	//printf("\n\nIn Simulation deltaTime equals %f\n\n", deltaTime);
 
-	//ComponentManager::GetInstance()->Update();
-
+	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//this clears the screen
 
 	//BoundaryAnalysis();//check for collisions
+	
+	ComponentManager::GetInstance()->Update();//Run ComponentManger Update
 
-	//RenderManager::GetInstance()->Update();//Run RenderManager Update
+	RenderManager::GetInstance()->Update();//Run RenderManager Update
 
 	worldTime->display();
 

@@ -13,26 +13,24 @@
 
 ObjectRenderObject::ObjectRenderObject(Objects* r)
 {
-    parentObjects = r;
+    parentObject = r;
 }
 
 void ObjectRenderObject::Render(void)
 {
-    //****This draws the robot as a circle****   
     glPushMatrix();
-
-    glTranslatef(parentObjects->getX(), parentObjects->getY(), 0);
-    glRotatef(parentObjects->getA(), 0, 0, 1);
-
+    glTranslatef(parentObject->getX(), parentObject->getY(), 0);
+    glRotatef(parentObject->getA(), 0, 0, 1);
     glBegin(GL_TRIANGLE_FAN);
-    glColor3f(0.0, 0.5, 0.0);
-    glVertex2f(0, 0);
-    for (int i = 0; i <= 100; i++)
-    {
-        glVertex2f(parentObjects->getR() * cos(i * 2.0f * PI / 20.0f),
-            parentObjects->getR() * sin(i * 2.0f * PI / 20.0f));
-    }
-    glEnd();
+    glColor3f(0.0, 1.5, 0.0);
 
+    for (int i = 0; i < 100; i++)
+    {
+        glVertex2f(parentObject->getR() * cos(i * 2.0f * PI / 20.0f),
+            parentObject->getR() * sin(i * 2.0f * PI / 20.0f));
+    }
+
+    glEnd();
     glPopMatrix();
+
 }

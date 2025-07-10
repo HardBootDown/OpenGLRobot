@@ -135,11 +135,9 @@ void ReadWriteFile::readFile()
 		fprintf(stderr, "err = %d: %s\n", errno, strerror(errno));
 	}*/
 
-	cout << "here" << endl;
-
 	MyGlut::getInstance()->screenWidth = buffer[0];
 	MyGlut::getInstance()->screenHeight = buffer[1];
 
 	//set the number of objects in Simulation to following and pass the array index of that value
-	Simulation::getInstance()->set_ObjectInfo(NUM_OF_OBJECTS, FIRST_OBJECT_RADIUS);//6 , index 21
+	Simulation::getInstance()->set_ObjectInfo(1 , 10);//6 , index 21
 }
